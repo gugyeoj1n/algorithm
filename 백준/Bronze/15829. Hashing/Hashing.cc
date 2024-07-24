@@ -8,12 +8,15 @@ int main(){
     ios::sync_with_stdio(false);
     cin.tie(NULL);
 
-    int r = 31, M = 1234567891, l, hash = 0;
+    int l;
+    long long hash = 0, r = 1, M = 1234567891;
     string target;
     cin >> l >> target;
 
     for(int i = 0; i < l; i++) {
-        hash += ((target[i] - 96) * (int) pow(r, i)) % M;
+        hash += ((target[i] - 96) * r) % M;
+        hash %= M;
+        r = (r * 31) % M;
     }
 
     cout << hash;
